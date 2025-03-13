@@ -1,19 +1,15 @@
 <template>
-   
-    <v-main>
-      <Default />
-    </v-main>
+  <v-app>
+    <Default />
+  </v-app>
 </template>
 
 <script>
-import Default from './layout/Default.vue';
+import Default from "./layout/Default.vue";
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    Default
+    Default,
   },
-
-  
 };
 </script>
