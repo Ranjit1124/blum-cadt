@@ -1,11 +1,12 @@
 <template>
     <div
       ref="threeContainer"
-      style="height:100vh"
-      class="three-container"
+      style="height: 100%;"
+      class="three-container mt-1"
     ></div>
 </template>
 <script>
+import { mapState } from 'vuex';
 import Three from '../../three/index.js'
 export default {
     name:'threeContainer',
@@ -16,12 +17,18 @@ data() {
 
   };
 },
-
+computed:{
+  ...mapState(['dimensions'])
+},
+watch:{
+  dimensions(newDimension){
+    this.threeScene.createCabinet(newDimension)
+  }
+},
 mounted() {
   this.threeContainer = this.$refs.threeContainer;
   this.threeScene = new Three(this.threeContainer);
   
-  this.threeScene.object();
 
 },
 
