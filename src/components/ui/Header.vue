@@ -1,4 +1,5 @@
 <template>
+
   <v-container style="height: 70px;" class="drop-shadow" fluid>
     <v-row no-gutters class="d-flex align-center">
       <v-col cols="6">
@@ -11,6 +12,7 @@
       </v-col>
     </v-row>
   </v-container>
+
 </template>
 <script>
 export default {
