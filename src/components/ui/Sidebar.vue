@@ -11,102 +11,102 @@
         <v-col class="cabinent-text letter-spacing"> Cabinet Dimensions </v-col>
         <v-col class="">
           <label>Width (mm)</label>
-          <v-autocomplete
+          <v-text-field
             rounded
             class="auto-complete"
-            @change="dimension()"
+            @input="dimension()"
             dense
             v-model="width"
-            :items="items"
-          ></v-autocomplete>
+            type="number"
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Depth (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
-            @change="dimension()"
+            @input="dimension()"
             v-model="depth"
             dense
             rounded
-          ></v-autocomplete>
+            type="number"
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Height (mm)</label>
-          <v-autocomplete
+          <v-text-field
             class="auto-complete"
             rounded
-            :items="items"
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="height"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Top Panel Thickness (mm)</label>
-          <v-autocomplete
+          <v-text-field
             class="auto-complete"
             rounded
-            :items="items"
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="topPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Bottom Panel Thickness (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
             rounded
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="bottomPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Right Panel Thickness (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
             rounded
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="rightPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Left Panel Thickness (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
             rounded
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="leftPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Back Panel Thickness (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
             rounded
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="backPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
         <v-col>
           <label>Front Panel Thickness (mm)</label>
-          <v-autocomplete
-            :items="items"
+          <v-text-field
             class="auto-complete"
             rounded
-            @change="dimension()"
+            type="number"
+            @input="dimension()"
             v-model="frontPanelThickness"
             dense
-          ></v-autocomplete>
+          ></v-text-field>
         </v-col>
       </v-row>
     </v-container>
@@ -117,17 +117,16 @@ export default {
   name: "sidebarComponent",
   data() {
     return {
-      width: "800",
-      depth: "800",
-      height: "800",
-      topPanelThickness: "800",
-      bottomPanelThickness: "800",
-      rightPanelThickness: "800",
-      leftPanelThickness: "800",
-      frontPanelThickness: "800",
-      backPanelThickness: "800",
+      width: "600",
+      depth: "600",
+      height: "600",
+      topPanelThickness: "10",
+      bottomPanelThickness: "10",
+      rightPanelThickness: "10",
+      leftPanelThickness: "10",
+      frontPanelThickness: "10",
+      backPanelThickness: "10",
 
-      items: ["400", "600", "800"],
     };
   },
   methods: {
@@ -136,15 +135,20 @@ export default {
         width: this.width / 100,
         height: this.height / 100,
         depth: this.depth / 100,
-        topPanelThickness: this.topPanelThickness / 100,
+      };
+        const thicknessValues = {
+            topPanelThickness: this.topPanelThickness / 100,
         bottomPanelThickness: this.bottomPanelThickness / 100,
-        rightPanelThickness: this.bottomPanelThickness / 100,
+        rightPanelThickness: this.rightPanelThickness / 100,
         leftPanelThickness: this.leftPanelThickness / 100,
         frontPanelThickness: this.frontPanelThickness / 100,
         backPanelThickness: this.backPanelThickness / 100,
-      };
 
+        } 
+        
       this.$store.commit("dimensionsData", cupboardDimension);
+      this.$store.commit("thicknessData", thicknessValues);
+
     },
   },
 };
