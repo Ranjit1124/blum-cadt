@@ -18,11 +18,15 @@ data() {
   };
 },
 computed:{
-  ...mapState(['dimensions'])
+  ...mapState(['dimensions','thickness'])
 },
 watch:{
-  dimensions(newDimension){
-    this.threeScene.createCabinet(newDimension)
+  dimensions(updatedDimension){
+    this.threeScene.updatedDimensions(updatedDimension)
+  },
+  thickness(updatedthickness){
+    this.threeScene.createCabinet(updatedthickness)
+
   }
 },
 mounted() {
